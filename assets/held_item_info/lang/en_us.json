@@ -1,0 +1,6 @@
+{
+  "held_item_info.setting.enabled": "Show held item info",
+  "held_item_info.setting.enabled.tooltip": "Shows the held item's tooltip lines (enchantments, potion effects, contents and more) under its name when it changes.",
+  "held_item_info.setting.background": "Text background",
+  "held_item_info.setting.background.tooltip": "Draws vanilla's text backdrop behind the info lines. Off draws the text alone."
+}

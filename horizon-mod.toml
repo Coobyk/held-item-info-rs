@@ -1,0 +1,33 @@
+id = "held_item_info"
+name = "Held Item Info"
+version = "0.1.0"
+description = "Shows the held item's tooltip info (enchantments, potion effects, contents and more) under its name above the hotbar. A port of A5b84's Fabric mod."
+authors = ["coobyk"]
+api = "0.2"
+side = "client"
+capabilities = ["registries"]
+
+[native]
+game = "26.3"
+horizon = "f00125f61f794aaa3d4e950d301f353b35b6ee3d"
+mixins = "e59da9094f0c2fdda6c627fe9eff22dec6a906f0"
+
+[[native.module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "umbx_held_item_info"
+source = "src/runtime.rs"
+
+# `native_hud` is gone in the new SDK; `native_render_gui_post` is its
+# documented replacement: same batch/corners, after the minimap in the HUD
+# layer (not drawn under F1).
+[[native.mixin]]
+id = "hud"
+target = "horizon_client::game::native_hooks::render_gui_post::Game::native_render_gui_post"
+kind = "HEAD"
+helper = "src/mixins/hud.rs"
+bindings = [
+  { name = "game", ty = "&Game<'_>", value = "&*self" },
+  { name = "batch", ty = "&mut HudBatch", value = "&mut *draw" },
+  { name = "corners", ty = "&mut Corners", value = "&mut *corners" },
+]
