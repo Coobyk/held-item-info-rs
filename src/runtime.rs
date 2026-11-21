@@ -10,9 +10,6 @@ use super::Game;
 
 /// The mod's id and settings namespace.
 pub(super) const ID: &str = "held_item_info";
-pub(super) const VERSION: &str = "0.1.0";
-pub(super) const DESCRIPTION: &str =
-    "Shows the held item's tooltip info (enchantments, potion effects, contents and more) under its name above the hotbar.";
 
 /// The `enabled` switch: hide the info without uninstalling the mod.
 fn enabled(game: &Game<'_>) -> bool {

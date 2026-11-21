@@ -19,8 +19,8 @@ name = "umbx_held_item_info"
 source = "src/runtime.rs"
 
 # `native_hud` is gone in the new SDK; `native_render_gui_post` is its
-# documented replacement: same batch/corners, after the minimap in the HUD
-# layer (not drawn under F1).
+# documented replacement: same batch, after the minimap in the HUD layer
+# (not drawn under F1).
 [[native.mixin]]
 id = "hud"
 target = "horizon_client::game::native_hooks::render_gui_post::Game::native_render_gui_post"
@@ -29,5 +29,4 @@ helper = "src/mixins/hud.rs"
 bindings = [
   { name = "game", ty = "&Game<'_>", value = "&*self" },
   { name = "batch", ty = "&mut HudBatch", value = "&mut *draw" },
-  { name = "corners", ty = "&mut Corners", value = "&mut *corners" },
 ]
